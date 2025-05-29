@@ -6,12 +6,10 @@ date: 2025-03-30
 
 Представим, что мы пишем реализацию компонента `MyComponent` на React:
 
-```ts
-export default function App() {
-  return <MyComponent />;
-}
-```
 
+    export default function App() {
+      return <MyComponent />;
+    } 
 
 Ниже будут представлены варианты реализаций компонента `MyComponent`, сможете определить, какие из них будут работать корректно?
 
@@ -20,18 +18,16 @@ export default function App() {
 <details>
 <summary> Вопрос 1</summary>
 
-```ts
-const MyComponent = () => {
-  const [count, setCount] = useState(0);
+  const MyComponent = () => {
+    const [count, setCount] = useState(0);
 
-  return (
-    <>
-      <h1>State Counter: {count}</h1>
-      <button onClick={() => setCount(prevCount => prevCount++)}>Increment State</button>
-    </>
-  );
-}
-```
+    return (
+      <>
+        <h1>State Counter: {count}</h1>
+        <button onClick={() => setCount(prevCount => prevCount++)}>Increment State</button>
+      </>
+    );
+  }
 
 <details > 
 <summary> Ответ</summary>
@@ -49,20 +45,20 @@ const MyComponent = () => {
 <details> 
 <summary> Вопрос 2 </summary>
 
-```ts
-const MyComponent = () => {
-  const refValue = useRef(0);
+`
+  const MyComponent = () => {
+    const refValue = useRef(0);
 
-  return (
-    <>
-      <h1>State Counter: {refValue.current}</h1>
-      <button onClick={() => (refValue.current = refValue.current + 1)}>
-        Increment Ref
-      </button>
-    </>
-  );
-};
-```
+    return (
+      <>
+        <h1>State Counter: {refValue.current}</h1>
+        <button onClick={() => (refValue.current = refValue.current + 1)}>
+          Increment Ref
+        </button>
+      </>
+    );
+  };
+`
 
 <details > 
 <summary> Ответ</summary>
@@ -80,17 +76,17 @@ const MyComponent = () => {
 <details> 
 <summary> Вопрос 3</summary>
 
-```ts
-const MyComponent = () => {
-  let count = 0;
-  return (
-    <>
-      <h1>State Counter: {count}</h1>
-      <button onClick={() => count++}>Increment</button>
-    </>
-  );
-}
-```
+`
+  const MyComponent = () => {
+    let count = 0;
+    return (
+      <>
+        <h1>State Counter: {count}</h1>
+        <button onClick={() => count++}>Increment</button>
+      </>
+    );
+  }
+`
 
 
 <details > 
@@ -109,24 +105,24 @@ const MyComponent = () => {
 <details > 
 <summary> Вопрос 4</summary>
 
-```ts
-const MyComponent = () => {
-  const [count, setCount] = useState(0);
-  const [coefficient, setCoefficient] = useState(0);
+`
+  const MyComponent = () => {
+    const [count, setCount] = useState(0);
+    const [coefficient, setCoefficient] = useState(0);
 
-  const increaseByCoefficient = () => {
-    setCoefficient(coefficient + 1);
-    setCount(count + coefficient);
-  };
+    const increaseByCoefficient = () => {
+      setCoefficient(coefficient + 1);
+      setCount(count + coefficient);
+    };
 
-  return (
-    <>
-      <h1>State Counter: {count}</h1>
-      <button onClick={increaseByCoefficient}>Add multiplier </button>
-    </>
-  );
-}
-```
+    return (
+      <>
+        <h1>State Counter: {count}</h1>
+        <button onClick={increaseByCoefficient}>Add multiplier </button>
+      </>
+    );
+  }
+`
 
 <details > 
 <summary> Ответ</summary>
@@ -143,24 +139,24 @@ const MyComponent = () => {
 <details>
 <summary> Вопрос 5</summary>
 
-```ts
-const MyComponent = () => {
-  const [count, setCount] = useState(0);
-  const valueRef = useRef(0);
+`
+  const MyComponent = () => {
+    const [count, setCount] = useState(0);
+    const valueRef = useRef(0);
 
-  useEffect(() => {
-    valueRef.current = count;
-  }, [count]);
+    useEffect(() => {
+      valueRef.current = count;
+    }, [count]);
 
 
-  return (
-    <>
-      <h1>State Counter: {valueRef.current}</h1>
-      <button onClick={() => setCount(valueRef.current + 1)}>Increment Count</button>
-    </>
-  );
-}
-```
+    return (
+      <>
+        <h1>State Counter: {valueRef.current}</h1>
+        <button onClick={() => setCount(valueRef.current + 1)}>Increment Count</button>
+      </>
+    );
+  }
+`
 
 <details>
 <summary> Ответ</summary>
@@ -178,37 +174,37 @@ const MyComponent = () => {
 <details>
 <summary> Вопрос 6</summary>
 
-```ts
-type State = { count: number; step: number };
-type Action =
-  | { type: "increment" }
-  | { type: "setStep"; payload: number }
-  | { type: "reset" };
+`
+  type State = { count: number; step: number };
+  type Action =
+    | { type: "increment" }
+    | { type: "setStep"; payload: number }
+    | { type: "reset" };
 
-const counterReducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case "increment":
-      return { ...state, count: state.count + state.step };
-    case "setStep":
-      return { ...state, step: action.payload };
-    case "reset":
-      return { count: 0, step: 1 };
-    default:
-      throw new Error("Unknown action type");
-  }
-};
+  const counterReducer = (state: State, action: Action): State => {
+    switch (action.type) {
+      case "increment":
+        return { ...state, count: state.count + state.step };
+      case "setStep":
+        return { ...state, step: action.payload };
+      case "reset":
+        return { count: 0, step: 1 };
+      default:
+        throw new Error("Unknown action type");
+    }
+  };
 
-export const MyComponent = () => {
-  const [state, dispatch] = useReducer(counterReducer, { count: 0, step: 1 });
+  export const MyComponent = () => {
+    const [state, dispatch] = useReducer(counterReducer, { count: 0, step: 1 });
 
-  return (
-    <div>
-      <h1>State Counter: {state.count}</h1>
-      <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
-    </div>
-  );
-};
-```
+    return (
+      <div>
+        <h1>State Counter: {state.count}</h1>
+        <button onClick={() => dispatch({ type: "increment" })}>Increment</button>
+      </div>
+    );
+  };
+`
 
 
 <details>
@@ -225,15 +221,15 @@ export const MyComponent = () => {
 <details>
 <summary> Вопрос 7</summary>
 
-```ts
-const MyComponent : FC<{count: number}>= (count)  => {
-  return (
-    <div>
-      <h1>State Counter: {count}</h1>
-    </div>
-  );
-};
-```
+`
+  const MyComponent : FC<{count: number}>= (count)  => {
+    return (
+      <div>
+        <h1>State Counter: {count}</h1>
+      </div>
+    );
+  };
+`
 <details>
 <summary> Ответ</summary>
 
@@ -252,22 +248,22 @@ const MyComponent : FC<{count: number}>= (count)  => {
 <details>
 <summary> Вопрос 8</summary>
 
-```ts
-const MyComponent = () => {
-  const [count, setCount] = useState(0);
+`
+  const MyComponent = () => {
+    const [count, setCount] = useState(0);
 
-  const increment = useCallback(() => {
-    setCount(count + 1); 
-  }, []); 
+    const increment = useCallback(() => {
+      setCount(count + 1); 
+    }, []); 
 
-  return (
-    <div>
-      <h1>State Counter: {count}</h1>
-      <button onClick={increment}>Increment</button>
-    </div>
-  );
-}
-```
+    return (
+      <div>
+        <h1>State Counter: {count}</h1>
+        <button onClick={increment}>Increment</button>
+      </div>
+    );
+  }
+`
 <details>
 <summary> Ответ</summary>
 
