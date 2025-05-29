@@ -45,7 +45,7 @@ date: 2025-03-30
 <details> 
 <summary> Вопрос 2 </summary>
 
-`
+
   const MyComponent = () => {
     const refValue = useRef(0);
 
@@ -58,7 +58,7 @@ date: 2025-03-30
       </>
     );
   };
-`
+
 
 <details > 
 <summary> Ответ</summary>
@@ -76,7 +76,7 @@ date: 2025-03-30
 <details> 
 <summary> Вопрос 3</summary>
 
-`
+
   const MyComponent = () => {
     let count = 0;
     return (
@@ -86,7 +86,7 @@ date: 2025-03-30
       </>
     );
   }
-`
+
 
 
 <details > 
@@ -105,7 +105,7 @@ date: 2025-03-30
 <details > 
 <summary> Вопрос 4</summary>
 
-`
+
   const MyComponent = () => {
     const [count, setCount] = useState(0);
     const [coefficient, setCoefficient] = useState(0);
@@ -122,7 +122,7 @@ date: 2025-03-30
       </>
     );
   }
-`
+
 
 <details > 
 <summary> Ответ</summary>
@@ -139,7 +139,7 @@ date: 2025-03-30
 <details>
 <summary> Вопрос 5</summary>
 
-`
+
   const MyComponent = () => {
     const [count, setCount] = useState(0);
     const valueRef = useRef(0);
@@ -156,7 +156,7 @@ date: 2025-03-30
       </>
     );
   }
-`
+
 
 <details>
 <summary> Ответ</summary>
@@ -174,7 +174,7 @@ date: 2025-03-30
 <details>
 <summary> Вопрос 6</summary>
 
-`
+
   type State = { count: number; step: number };
   type Action =
     | { type: "increment" }
@@ -204,7 +204,7 @@ date: 2025-03-30
       </div>
     );
   };
-`
+
 
 
 <details>
@@ -221,7 +221,7 @@ date: 2025-03-30
 <details>
 <summary> Вопрос 7</summary>
 
-`
+
   const MyComponent : FC<{count: number}>= (count)  => {
     return (
       <div>
@@ -229,7 +229,7 @@ date: 2025-03-30
       </div>
     );
   };
-`
+
 <details>
 <summary> Ответ</summary>
 
@@ -248,7 +248,7 @@ date: 2025-03-30
 <details>
 <summary> Вопрос 8</summary>
 
-`
+
   const MyComponent = () => {
     const [count, setCount] = useState(0);
 
@@ -263,7 +263,7 @@ date: 2025-03-30
       </div>
     );
   }
-`
+
 <details>
 <summary> Ответ</summary>
 
